@@ -86,7 +86,6 @@ class GridModel {
             } else {
 //                tile.isSelected = false
             }
-//            let auxTile = Tile(z: tile.z, x: <#T##Float#>, isSelected: <#T##Bool#>)
         }
         setSelection()
         return boxes

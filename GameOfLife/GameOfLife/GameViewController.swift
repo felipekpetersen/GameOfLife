@@ -18,6 +18,7 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     var grid = GridModel()
     var shouldStart = false
     var timer = Timer()
+    var y: Float = 1.5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,19 +102,19 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
     
     @objc func start() {
         
-        for node in self.nodesAdded {
-            node.removeFromParentNode()
-        }
-        self.nodesAdded.removeAll()
+//        for node in self.nodesAdded {
+//            node.removeFromParentNode()
+//        }
+//        self.nodesAdded.removeAll()
         let boxes = self.grid.getNewBoxes()
         for result in boxes {
-            let box = self.grid.setBoxToPosition(x: result.x ?? -1, y: 0.5, z: result.z ?? -1)
+            let box = self.grid.setBoxToPosition(x: result.x ?? -1, y: y, z: result.z ?? -1)
             if let box = box {
                 self.nodesAdded.append(box)
                 self.scene.rootNode.addChildNode(box)
             }
-            
         }
+        self.y += 1
     }
     
     @objc
